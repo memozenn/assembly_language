@@ -19,5 +19,39 @@ Four 32-bit data registers are used for arithmetic, logical, and other operation
 can be used as four 16-bit data registers: AX, BX, CX and DX.
 8-bit data registers: AH, AL, BH, BL, CH, CL, DH, and DL.
 
-Some of these data registers have specific use in arithmetical operations.
+Some of these data registers have specific use in arithmetical operations--
+AX: is the primary accumulator
+BX: is known as the base register, as it could be used in indexed addressing.
+CX: is known as the count register, as the ECX, CX registers store the loop count in iterative operations.
+DX: is known as the data register. It is also used in input/output operations.
+
+
+--Pointer Registers--
+Instruction Pointer (IP) − The 16-bit IP register stores the offset address of the next instruction to be executed.
+Stack Pointer (SP) − The 16-bit SP register provides the offset value within the program stack.
+Base Pointer (BP) − The 16-bit BP register mainly helps in referencing the parameter variables passed to a subroutine.
+
+
+--Index Registers--
+Source Index (SI) − It is used as source index for string operations.
+Destination Index (DI) − It is used as destination index for string operations.
+
+
+--Control Registers--
+Overflow Flag (OF): Indicates overflow in signed arithmetic operations. Set if the signed result is too large for the destination.
+Direction Flag (DF): Controls the direction of string operations. DF = 0 for left-to-right, DF = 1 for right-to-left.
+Interrupt Flag (IF): Controls processing of external interrupts. IF = 0 disables external interrupts, IF = 1 enables them.
+Trap Flag (TF): Enables single-step mode for debugging. Execution proceeds one instruction at a time.
+Sign Flag (SF): Shows the sign of the result of an arithmetic operation. SF = 0 for positive result, SF = 1 for negative result.
+Zero Flag (ZF): Indicates the result of arithmetic or comparison. ZF = 1 for a zero result, ZF = 0 for a non-zero result.
+Auxiliary Carry Flag (AF): Contains the carry from bit 3 to bit 4 in arithmetic. Used for specialized arithmetic operations.
+Parity Flag (PF): Indicates the parity (even or odd) of the result. PF = 1 for an odd number of 1-bits, PF = 0 for an even number.
+Carry Flag (CF):Contains the carry from the leftmost bit in arithmetic. Stores the last bit in shift or rotate operations.
+
+
+--Segment Registers--
+Code Segment − It contains all the instructions to be executed. A 16-bit Code Segment register or CS register stores the starting address of the code segment.
+Data Segment − It contains data, constants and work areas. A 16-bit Data Segment register or DS register stores the starting address of the data segment.
+Stack Segment − It contains data and return addresses of procedures or subroutines. It is implemented as a 'stack' data structure. The Stack Segment register or SS register stores the starting address of the stack.
+
 

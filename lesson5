@@ -1,0 +1,47 @@
+----Addressing Modes----
+
+-Register Addressing-
+Depending upon the instruction, the register may be the first operand, the second operand or both.
+MOV DX, TAX_RATE   ; Register in first operand
+MOV COUNT, CX	   ; Register in second operand
+MOV EAX, EBX	   ; Both the operands are in registers
+//As processing data between registers does not involve memory, it provides fastest processing of data.
+
+-Immediate Addressing-
+the first operand may be a register or memory location, and the second operand is an immediate constant.
+BYTE_VALUE  DB  150    ; A byte value is defined
+WORD_VALUE  DW  300    ; A word value is defined
+ADD  BYTE_VALUE, 65    ; An immediate operand 65 is added
+MOV  AX, 45H           ; Immediate constant 45H is transferred to AX
+
+-Direct Memory Addressing-
+This way of addressing results in slower processing of data. To locate the exact location of data in memory, we need the segment start address, which is typically found in the DS register and an offset value. This offset value is also called effective address.
+ADD	BYTE_VALUE, DL	; Adds the register in the memory location
+MOV	BX, WORD_VALUE	; Operand from the memory is added to register
+
+-Direct-Offset Addressing-
+uses the arithmetic operators to modify an address.
+BYTE_TABLE DB  14, 15, 22, 45      ; Tables of bytes
+WORD_TABLE DW  134, 345, 564, 123  ; Tables of words
+MOV CL, BYTE_TABLE[2]	; Gets the 3rd element of the BYTE_TABLE
+MOV CL, BYTE_TABLE + 2	; Gets the 3rd element of the BYTE_TABLE
+MOV CX, WORD_TABLE[3]	; Gets the 4th element of the WORD_TABLE
+MOV CX, WORD_TABLE + 3	; Gets the 4th element of the WORD_TABLE
+
+-Indirect Memory Addressing-
+Indirect addressing is generally used for variables containing several elements like, arrays. Starting address of the array is stored in, say, the EBX register.
+MY_TABLE TIMES 10 DW 0  ; Allocates 10 words (2 bytes) each initialized to 0
+MOV EBX, [MY_TABLE]     ; Effective Address of MY_TABLE in EBX
+MOV [EBX], 110          ; MY_TABLE[0] = 110
+ADD EBX, 2              ; EBX = EBX +2
+MOV [EBX], 123          ; MY_TABLE[1] = 123
+
+-The MOV Instruction-
+We have already used the MOV instruction that is used for moving data from one storage space to another. The MOV instruction takes two operands.
+//MOV  destination, source
+The MOV instruction may have one of the following five forms −
+MOV  register, register
+MOV  register, immediate
+MOV  memory, immediate
+MOV  register, memory
+MOV  memory, register
